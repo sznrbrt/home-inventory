@@ -21,7 +21,7 @@ router.post('/', (req, res, next) => {
     });
 });
 
-// DELETE /api/posts
+// DELETE /api/items
 router.delete('/:id', (req, res, next) => {
     var id = req.params.id;
     Item.deleteById(id, (err) => {
@@ -30,7 +30,7 @@ router.delete('/:id', (req, res, next) => {
     })
 })
 
-// PUT /api/posts
+// PUT /api/items
 router.put('/:id', (req, res, next) => {
     var id = req.params.id;
     Item.editById(id, req.body, (err) => {

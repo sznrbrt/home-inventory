@@ -24,4 +24,11 @@ exports.create = function(room, callback) {
 exports.deleteById = function(id, callback) {
     if(!id) return callback('Error! You must define an id!');
     db.query(`DELETE FROM rooms WHERE id = '${id}';`, callback(null))
-}
+};
+
+exports.editById = function(id, room, callback) {
+    if(!id || !room) return callback('Error! You must define both id and room!');
+    db.query(`UPDATE rooms
+                SET name = '${room.name}'
+                WHERE id = '${id}';`, callback);
+};

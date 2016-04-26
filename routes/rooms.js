@@ -31,4 +31,13 @@ router.delete('/:id', (req, res, next) => {
     })
 })
 
+// PUT /api/rooms
+router.put('/:id', (req, res, next) => {
+    var id = req.params.id;
+    Room.editById(id, req.body, (err) => {
+      if(err) return res.status(400).send(err);
+      res.send('You have edited the room!');
+    })
+})
+
 module.exports = router;
