@@ -21,4 +21,14 @@ router.post('/', (req, res, next) => {
     });
 });
 
+// DELETE /api/rooms
+router.delete('/:id', (req, res, next) => {
+    //delete one post by ID
+    var id = req.params.id;
+    Room.deleteById(id, (err) => {
+      if(err) return res.status(400).send(err);
+      res.send('You have deleted the room!');
+    })
+})
+
 module.exports = router;

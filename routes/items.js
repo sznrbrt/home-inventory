@@ -23,7 +23,6 @@ router.post('/', (req, res, next) => {
 
 // DELETE /api/posts
 router.delete('/:id', (req, res, next) => {
-    //delete one post by ID
     var id = req.params.id;
     Item.deleteById(id, (err) => {
       if(err) return res.status(400).send(err);
@@ -33,7 +32,6 @@ router.delete('/:id', (req, res, next) => {
 
 // PUT /api/posts
 router.put('/:id', (req, res, next) => {
-    //edit one post by ID
     var id = req.params.id;
     Item.editById(id, req.body, (err) => {
       if(err) return res.status(400).send(err);

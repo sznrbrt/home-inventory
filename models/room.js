@@ -20,3 +20,8 @@ exports.create = function(room, callback) {
                 VALUES ('${newRoom.name}');`,
                 callback(null));
 };
+
+exports.deleteById = function(id, callback) {
+    if(!id) return callback('Error! You must define an id!');
+    db.query(`DELETE FROM rooms WHERE id = '${id}';`, callback(null))
+}
