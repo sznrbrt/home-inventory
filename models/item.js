@@ -40,3 +40,22 @@ exports.create = function(item, callback) {
                         '${newItem.id}');`,
                 callback(null, newItem.id));
 };
+
+exports.deleteById = function(id, callback) {
+    if(!id) return callback('Error! You must define an id!');
+    db.query(`DELETE FROM items WHERE id = '${id}';`, callback(null))
+};
+
+exports.editById = function(id, item, callback) {
+    if(!id || !item) return callback('Error! You must define both id and item!');
+    db.query(`UPDATE items
+                SET name = '${item.name}',
+                    make = '${item.make}',
+                    model = '${item.model}',
+                    sn = '${item.sn}',
+                    category = '${item.category}',
+                    value = '${item.netValue}',
+                    room = '${item.room}'
+                WHERE id = '${id}';`, callback);
+
+};
