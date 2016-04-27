@@ -40,4 +40,14 @@ router.put('/:id', (req, res, next) => {
     })
 })
 
+// GET /api/rooms
+router.get('/allitembyroom/:id', (req, res, next) => {
+    var id = req.params.id;
+    Room.itemsByRoomId(id, (err, items) => {
+      if(err) return res.status(400).send(err);
+      res.send(items);
+    })
+})
+
+
 module.exports = router;

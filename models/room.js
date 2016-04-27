@@ -31,3 +31,11 @@ exports.editById = function(id, room, callback) {
                 SET name = '${room.name}'
                 WHERE id = '${id}';`, callback);
 };
+
+exports.itemsByRoomId = function(id, callback) {
+    if(!id) return callback('Error! You must define an id and a room');
+    db.query(`SELECT items.name, items.make, items.model, items.sn, items.category, items.value, items.room, items.id
+                FROM items
+                LEFT JOIN rooms
+                ON rooms.id = items.room;`, callback);
+};
