@@ -1,7 +1,6 @@
 'use strict';
 
 var db = require('../config/db');
-var uuid = require('uuid');
 
 db.query(`CREATE TABLE IF NOT EXISTS items(
             name TEXT,
@@ -11,7 +10,7 @@ db.query(`CREATE TABLE IF NOT EXISTS items(
             category TEXT,
             value INTEGER,
             room INTEGER,
-            id TEXT)`);
+            id int PRIMARY KEY AUTO_INCREMENT)`);
 
 exports.findAll = function(callback) {
     db.query('SELECT * FROM items', callback);
@@ -25,20 +24,18 @@ exports.create = function(item, callback) {
         model: item.model,
         sn: item.sn,
         category: item.category,
-        value: item.netValue,
-        room: item.room,
-        id: uuid()
+        value: item.value,
+        room: item.room
     };
-    db.query(`INSERT INTO items (name, make, model, sn, category, value, room, id)
+    db.query(`INSERT INTO items (name, make, model, sn, category, value, room)
                 VALUES ('${newItem.name}',
                         '${newItem.make}',
                         '${newItem.model}',
                         '${newItem.sn}',
                         '${newItem.category}',
                         '${newItem.value}',
-                        '${newItem.room}',
-                        '${newItem.id}');`,
-                callback(null, newItem.id));
+                        '${newItem.room}')`,
+                callback(null));
 };
 
 exports.deleteById = function(id, callback) {

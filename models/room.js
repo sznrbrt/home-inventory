@@ -1,7 +1,6 @@
 'use strict';
 
 var db = require('../config/db');
-var uuid = require('uuid');
 
 db.query(`CREATE TABLE IF NOT EXISTS rooms(
             name TEXT,

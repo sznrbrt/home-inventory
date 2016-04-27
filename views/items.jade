@@ -1,0 +1,46 @@
+extends ./dashboard.jade
+
+block pageContent
+  div.row.text-center
+    div.col-xs-12
+      div.row
+        div.col-xs-10
+          div.row
+            h1 Items
+        div.col-xs-2
+          div.row
+            button.btn.btn-default.btn-sm.newItem(type='button')
+              span.glyphicon.glyphicon-plus
+              | New Item
+  div.row
+    div.col-xs-12
+      h4 All items
+      .table-responsive
+        table.table
+          thead
+            tr
+              th id
+              th Name
+              th Make
+              th Model
+              th Serial Number
+              th Category
+              th Value in $'s
+              th Room
+              th 
+          tbody.items
+            tr.templateItem
+              td.id 1
+              td.name Oculus Rift VR Headset
+              td.make Oculus
+              td.model Rift
+              td.sn SN20160812
+              td.category Entertainment
+              td.value 500
+              td.room Kitchen
+              td
+                button.btn.btn-default.btn-sm.editButton(type='button')
+                  span.glyphicon.glyphicon-pencil
+                button.btn.btn-default.btn-sm.deleteButton(type='button')
+                  span.glyphicon.glyphicon-remove
+              

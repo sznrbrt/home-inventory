@@ -1,0 +1,53 @@
+extends ./layout.jade
+
+block content
+  #wrapper
+    // Sidebar
+    #sidebar-wrapper
+      ul.sidebar-nav
+        li.sidebar-brand
+          a(href='/')
+            | Home Inventory
+        li
+          a(href='/items') Items
+        li
+          a(href='/rooms') Rooms
+    #page-content-wrapper
+      .container
+        block pageContent
+        
+      div.modal.fade.new-item-modal(tabindex='-1', role='dialog')
+        div.modal-dialog(role='document')
+          div.modal-content
+            div.modal-header.text-center
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4.modal-title New Item
+            div.modal-body.text-center
+              form#newItem(action='')
+                #name.input-group.topMargin
+                  span.input-group-addon.atLeastWidth Name
+                  input#input-name.form-control(type='text', placeholder='E.g.: Oculus Rift')
+                #make.input-group.topMargin
+                  span.input-group-addon.atLeastWidth Make
+                  input#input-make.form-control(type='text', placeholder='E.g.: Oculus')
+                #model.input-group.topMargin
+                  span.input-group-addon.atLeastWidth Model
+                  input#input-model.form-control(type='text', placeholder='E.g.: Rift')
+                #sn.input-group.topMargin
+                  span.input-group-addon.atLeastWidth Serial Number
+                  input#input-sn.form-control(type='text', placeholder='E.g.: SN123-456')
+                #category.input-group.topMargin
+                  span.input-group-addon.atLeastWidth Category
+                  select#selectRoom.form-control.squarecorners
+                    option -
+                #value.input-group.topMargin
+                  span.input-group-addon.atLeastWidth Value in $'s
+                  input#input-value.form-control(type='text', placeholder='E.g.: 500')
+                #room.input-group.topMargin
+                  span.input-group-addon.atLeastWidth Room
+                  select#selectRoom.form-control.squarecorners
+                    option Basement
+            div.modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') Close
+              button#addItem.btn.btn-primary(type='button') Add

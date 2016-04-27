@@ -18,7 +18,15 @@ app.set('view engine', 'jade');
 
 
 app.get('/', (req, res, next) => {
-  res.end('hello\n');
+  res.render('index');
+})
+
+app.get('/rooms', (req, res, next) => {
+  res.render('rooms');
+})
+
+app.get('/items', (req, res, next) => {
+  res.render('items');
 })
 
 app.use('/api', require('./routes/api'));
